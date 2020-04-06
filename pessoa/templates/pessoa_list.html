@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{%block content%}
+
+{% for object in object_list  %}
+<table>
+<ul>Nome:</ul>
+<li>{{object.nome}}</li>
+</table>    
+
+    
+{% endfor %}
+    
+
+{%endblock content%}
