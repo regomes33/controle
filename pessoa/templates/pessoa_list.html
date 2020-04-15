@@ -1,16 +1,79 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 
+
+
+{%block css%}
+
+<style type="text/css">
+   
+   .col-md-06 a{
+    text-decoration:none;
+    color: black;
+    
+    }
+</style>
+{%endblock css%}
+
 {%block content%}
-
-{% for object in object_list  %}
-<table>
-<ul>Nome:</ul>
-<li>{{object.nome}}</li>
-</table>    
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Lista de Policiais Cadastrados </h2>
+        </div>
+    </div>
 
     
-{% endfor %}
+        
+            <div class="col-md-12">
+                <h5>Policiais da Ari 3ºCRPM</h5>
+                <div class="col-md-06" style="text-align: right ;margin-bottom: 40px;">
+                    <button type="button" class="btn btn-info" > <a class="link" href="{% url 'pessoa:pessoa_add' %}">Cadastrar Policial </a> </button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        
+                        <th>Nome</th>
+                        <th>Sobre Nome</th>
+                        <th>Graduação</th>
+                        <th>RG</th>
+                        <th>CPF</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list  %}
+                
+                    <tr>
+                        <td>{{object.nome}}</td>
+                        <td>{{object.sobrenome}}</td>
+                        <td>{{object.graduacao}}</td>
+                        <td>{{object.rg_funcional}}</td>
+                        <td>{{object.cpf}}</td>
+
+                    </tr>
+
+
+                    
+                    {%endfor%}
+                    
+
+
+
+                    </tbody>
+
+
+
+
+                </table>
+
+            </div>
+
+        
     
+
+
+
+
 
 {%endblock content%}

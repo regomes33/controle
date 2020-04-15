@@ -3,6 +3,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Pessoa(models.Model):
+    
     nome=models.CharField('nome',max_length=50)
     sobrenome=models.CharField('sobrenome',max_length=100)
     graduacao=models.CharField('graduacao',max_length=50)
@@ -19,4 +20,5 @@ class Pessoa(models.Model):
 
 
     def __str__(self):
-        return ' '.join(filter(None,[self.graduacao,self.nome]))
+        #return ' '.join(filter(None,['Graduação: ' ,self.graduacao,' Nome: ',self.nome,' CPF:  ',self.cpf]))
+        return self.cpf

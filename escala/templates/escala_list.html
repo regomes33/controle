@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+
+
+{%block css%}
+
+<style type="text/css">
+   
+   .col-md-06 a{
+    text-decoration:none;
+    color: black;
+    
+    }
+</style>
+{%endblock css%}
+
+{%block content%}
+    <div class="jumbotron">
+        <div class="container">
+            <h2 style="text-align: center;">Escala Ari 3ºCRPM </h2>
+        </div>
+    </div>
+
+    
+        
+            
+                <h5 style="text-align: center;">Escala Extraordinária</h5>
+                <div class="col-md-06" style="text-align: right ;margin-bottom: 40px;">
+                    <button type="button" class="btn btn-info" > <a class="link" href="{% url 'escala:escala_add' %}">Cadastrar Escala </a> </button>
+                </div>
+                {% if object.servico == extraordinario  %}
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                
+                                <th>VTR</th>
+                                <th>DIA/MÊS</th>
+                                <th>Semana</th>
+                                <th>Horas</th>
+                                <th>CPF</th>
+                                <th>RG</th>
+                                <th>NOME</th>
+                                <th>ASSINATURA</th>
+                                <th>RAI</th>
+
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                                        {% for object in object_list  %}
+                                            
+                                                <tr>
+                                                    <td>{{object.viatura}}</td>
+                                                    <td>{{object.comandante.cpf}}</td>
+                                                    <td>{{object.motorista.nome}}</td>
+                                                    <td>{{object.motorista.cpf}}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>{{object.pessoa}}</td>
+
+                                                </tr>
+
+
+                                        
+                                        {%endfor%}
+                               
+
+
+
+                            </tbody>
+
+
+
+
+                        </table>
+                {%endif%}    
+
+           
+
+        
+
+
+            
+            <div class="col-md-12" style="padding-top: 90px;">
+                <h5 style="text-align: center; padding-bottom: 50px;">Escala Ordinária</h5>
+               
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        
+                        <th>VTR</th>
+                        <th>DIA/MÊS</th>
+                        <th>Semana</th>
+                        <th>Horas</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>NOME</th>
+                        <th>ASSINATURA</th>
+                        <th>RAI</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list  %}
+                
+                    <tr>
+                        <td>{{object.nome}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+
+
+                    
+                    {%endfor%}
+                    
+
+
+
+                    </tbody>
+
+
+
+
+                </table>
+
+            </div>    
+    
+
+
+
+
+
+{%endblock content%}

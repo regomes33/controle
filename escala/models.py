@@ -1,5 +1,6 @@
 from django.db import models
 from pessoa.models import Pessoa
+from django.urls import reverse
 
 # Create your models here.
 
@@ -8,7 +9,6 @@ TIPOVTR=(
     ('reserva','Reserva'),
 
 )
-
 
 
 class Viatura(models.Model):
@@ -30,22 +30,27 @@ class Viatura(models.Model):
 
 SERVICOS=(
     ('extraordinario','Extraordinário'),
-    ('odrinario','Ordinário'),
+    ('ordinario','Ordinário'),
 )
 
 class Escala (models.Model):
-    pessoa=models.ForeignKey(Pessoa, on_delete=models.PROTECT)
+    
+    
+    comandante=models.ForeignKey(Pessoa,related_name='comandantes', on_delete=models.PROTECT)
+    motorista=models.ForeignKey(Pessoa,related_name='motoristas', on_delete=models.PROTECT)
+    analista=models.ForeignKey(Pessoa,related_name='analistas', on_delete=models.PROTECT)
     viatura=models.ForeignKey(Viatura,on_delete=models.PROTECT)
-    rai=models.IntegerField('rai',)
+    rai=models.IntegerField('rai')
     date=models.DateField('Data da Escala')
     horas_trabalhada=models.CharField('Horas', max_length=3)
     servico=models.CharField('Servico', max_length=20, choices=SERVICOS)
-    quilometragem= models.IntegerField('KM',)
-
-
-
+    quilometragem= models.IntegerField('KM')
 
     
+    
+    def get_absolute_url(self):
+        return reverse('escala:escala_list')
+
 
     class Meta:
         """Meta definition for MODELNAME."""
