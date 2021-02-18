@@ -8,14 +8,13 @@
 
 ```
 git clone https://github.com/regomes33/controle.git
-cd sistema-int
+cd controle
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements/dev.txt # ou
 pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
-python manage.py create_data
 ```
 
 ### Variáveis de ambiente
